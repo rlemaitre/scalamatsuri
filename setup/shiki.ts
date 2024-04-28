@@ -1,11 +1,9 @@
 /* ./setup/shiki.ts */
 import { defineShikiSetup } from '@slidev/types'
+import customTheme from './material-theme-darker.json'
 
 export default defineShikiSetup(() => {
-    return {
-        themes: {
-          dark: 'material-theme-darker',
-          light: 'material-theme-darker',
-        }
-    }
+  return {
+    theme: customTheme
+  }
 })

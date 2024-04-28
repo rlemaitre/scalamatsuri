@@ -547,13 +547,6 @@
   dependencies:
     "@iconify/types" "*"
 
-"@iconify-json/prime@^1.1.11":
-  version "1.1.11"
-  resolved "https://registry.yarnpkg.com/@iconify-json/prime/-/prime-1.1.11.tgz#a0e831185ce3fc2683638ea90fe6abf4bab73665"
-  integrity sha512-fCvbIY4I68OPcV+CtGS9RrJrkxkb8RAtGj2k0rmxABHVoglHCNx7tLi3ow0Wsnytc62ag1D3IrR1JigKmw9IMw==
-  dependencies:
-    "@iconify/types" "*"
-
 "@iconify-json/simple-icons@^1.1.91":
   version "1.1.100"
   resolved "https://registry.yarnpkg.com/@iconify-json/simple-icons/-/simple-icons-1.1.100.tgz#02757aeff6a1923f59ae0e0a7fd4501def309249"
@@ -1876,11 +1869,6 @@ cliui@^8.0.1:
     string-width "^4.2.0"
     strip-ansi "^6.0.1"
     wrap-ansi "^7.0.0"
-
-codemirror-theme-vars@^0.1.2:
-  version "0.1.2"
-  resolved "https://registry.yarnpkg.com/codemirror-theme-vars/-/codemirror-theme-vars-0.1.2.tgz#60db6877d16a400809e919b9bec33d72dbab1dfa"
-  integrity sha512-WTau8X2q58b0SOAY9DO+iQVw8JKVEgyQIqArp2D732tcc+pobbMta3bnVMdQdmgwuvNrOFFr6HoxPRoQOgooFA==
 
 codemirror@^5.65.16:
   version "5.65.16"
@@ -4228,11 +4216,6 @@ prettier@^3.2.5:
   resolved "https://registry.npmjs.org/prettier/-/prettier-3.2.5.tgz"
   integrity sha512-3/GWa9aOC0YeD7LUfvOG2NiDyhOWRvt1k+rcKhOuYnMY24iiCphgneUfJDyFXd6rZCAnuLBv6UeAULtrhT/F4A==
 
-prism-theme-vars@^0.2.5:
-  version "0.2.5"
-  resolved "https://registry.yarnpkg.com/prism-theme-vars/-/prism-theme-vars-0.2.5.tgz#4691660f52c2ec790187a81df7dcd22fceaef128"
-  integrity sha512-/D8gBTScYzi9afwE6v3TC1U/1YFZ6k+ly17mtVRdLpGy7E79YjJJWkXFgUDHJ2gDksV/ZnXF7ydJ4TvoDm2z/Q==
-
 prismjs@^1.29.0:
   version "1.29.0"
   resolved "https://registry.npmjs.org/prismjs/-/prismjs-1.29.0.tgz"
@@ -4594,11 +4577,6 @@ tar@^6.2.0:
     minizlib "^2.1.1"
     mkdirp "^1.0.3"
     yallist "^4.0.0"
-
-theme-vitesse@^0.7.9:
-  version "0.7.9"
-  resolved "https://registry.yarnpkg.com/theme-vitesse/-/theme-vitesse-0.7.9.tgz#b241a3d004dc14766aa3686524507155fdffccbb"
-  integrity sha512-wgxHWOIEcIBp/5MAdO8Z5c0vdKy5J5008Kqt/uOYruel9oJ4TrvH3qXgCsatp4ImROd1UWsIgQ3C0R8db38qgA==
 
 to-fast-properties@^2.0.0:
   version "2.0.0"
@@ -4989,6 +4967,17 @@ vite-plugin-vue-server-ref@^0.4.2:
     klona "^2.0.6"
     mlly "^1.5.0"
     ufo "^1.3.2"
+
+vite@^5.2.10:
+  version "5.2.10"
+  resolved "https://registry.yarnpkg.com/vite/-/vite-5.2.10.tgz#2ac927c91e99d51b376a5c73c0e4b059705f5bd7"
+  integrity sha512-PAzgUZbP7msvQvqdSD+ErD5qGnSFiGOoWmV5yAKUEI0kdhjbH6nMWVyZQC/hSc4aXwc0oJ9aEdIiF9Oje0JFCw==
+  dependencies:
+    esbuild "^0.20.1"
+    postcss "^8.4.38"
+    rollup "^4.13.0"
+  optionalDependencies:
+    fsevents "~2.3.3"
 
 vite@^5.2.7:
   version "5.2.10"

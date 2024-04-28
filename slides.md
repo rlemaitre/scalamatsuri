@@ -1,5 +1,5 @@
 ---
-theme: ./theme
+theme: .
 lineNumbers: true
 colorSchema: light
 highlighter: shiki
@@ -32,7 +32,7 @@ fonts:
 themeConfig:
   primary: '#d32129'
   backgroundUrl: 'url(/images/background.png)'
-  background: '#ffffff'
+  # background: '#ffffff'
   paginationPagesDisabled: [1, 55]
   paginationX: r
   paginationY: t
