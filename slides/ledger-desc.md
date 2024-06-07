@@ -21,7 +21,7 @@ tags: [Security, Self-custody]
 </div>
 
 ::logo::
-<img src="/images/ledger.svg" width="250" class="">
+<img src="/images/ledger-black.svg" width="250" class="">
 
 <!--
 
