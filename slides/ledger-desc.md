@@ -1,7 +1,7 @@
 ---
 layout: company
 name: Ledger
-logo: /images/ledger.svg
+logo: /images/ledger-black.svg
 website:
     name: ledger.com
     url: https://ledger.com
