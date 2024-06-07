@@ -4,6 +4,11 @@
   --slidev-theme-primary: #5d8392;
 }
 
+.slidev-layout {
+  padding-top: 1rem;
+  padding-bottom: 4rem;
+}
+
 .slidev-layout.cover,
 .slidev-layout.intro {
   @apply h-full grid;
@@ -13,7 +18,7 @@
   }
 
   h1 + p {
-    @apply -mt-2 opacity-50 mb-4;
+    @apply opacity-50 mb-4;
   }
 
   p + h2,
@@ -22,3 +27,25 @@
     @apply mt-10;
   }
 }
+
+#slide-content {
+
+  footer {
+    @apply fixed h-4rem bottom-0 pl-10 pr-10;
+    width: 100%;
+    background-color: #333;
+    color: white;
+    text-align: center;
+    line-height: 4rem;
+  }
+  #slideshow {
+    min-height: calc(100% - 4rem);
+    max-height: calc(100% - 4rem);
+    height: calc(100% - 4rem);
+    padding-bottom: 4rem;
+  }
+}
+
+
+
+

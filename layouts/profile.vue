@@ -19,9 +19,11 @@ export interface Props {
   website?: Blog | null
   mail?: string
   blog?: Blog | null
+  showContact: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
+  showContact: false,
   twitter: null,
   bluesky: null,
   job: '',
@@ -51,7 +53,7 @@ const imageSrc = resolveAssetUrl(props.image);
           <span class="uppercase tag mx-2" v-for="item in tags"><span class="accent">#</span>{{ item }}</span>
         </div>
       </div>
-      <div class="contact flex-col w-full">
+      <div v-if="showContact" class="contact flex-col w-full">
         <h3 class="uppercase">Contact</h3>
         <div>
           <a class="mx-2" v-if="blog" v-bind:href="blog.url" target="_blank">

@@ -1,8 +1,3 @@
-<script setup lang="ts">
-import { Subtitles } from 'slidev-theme-viplay/types'
-
-const contents = {
-  jp_JP: {
     page1 :{
       click0: [
         'Ironライブラリで守られた型安全性',
@@ -22,9 +17,6 @@ const contents = {
       click0: [
         '約650名が勤務、多くが R&D (リサーチと開発)',
       ],
-      click1: [
-        '募集しています',
-      ]
     },
     page5 :{
       click0: [
@@ -133,7 +125,7 @@ const contents = {
     },
     page26 :{
       click0: [
-        '(1)可読性 (2)厳格な順序 (3)検証 (4)参照透過性 (5)性能 (6)簡潔さ (7)コンパイル時のチェック',
+        '(1)可読性 (2)厳格な順序 (3)検証 (4)参照透過性 (5)性能 (6)簡潔さ',
       ],
     },
     page27 :{
@@ -143,7 +135,7 @@ const contents = {
     },
     page28 :{
       click0: [
-        '',
+        '(no subs)',
       ],
     },
     page29 :{
@@ -158,9 +150,6 @@ const contents = {
     },
     page31 :{
       click0: [
-        '組み合わせ可能な型制約ライブラリ',
-      ],
-      click1: [
         '組み合わせ可能な型制約ライブラリ',
       ],
     },
@@ -196,9 +185,6 @@ const contents = {
     },
     page38 :{
       click0: [
-        '',
-      ],
-      click1: [
         'コンパイル時に条件関数を評価できないため、値をリファインできません',
       ],
     },
@@ -281,45 +267,9 @@ const contents = {
       click0: [
         '違法な状態を表現できないようにする',
       ],
-      click1: [
-        '',
-      ],
-      click2: [
-        '',
-      ],
-      click3: [
-        '',
-      ],
     },
     page55 :{
       click0: [
         'ご清聴ありがとうございました',
       ],
     },
-  },
-  en: {
-    page1: {
-      click0: [
-      ],
-    },
-  },
-}
-const config = {
-  noTTSDelay: 5000,
-  ttsLangName: {
-    jp_JP: 'Japanese',
-    en: 'English'
-  },
-  background: 'transparent',
-  color: '#ffffff',
-  //fontSize: '36pt',
-}
-const subtitles = new Subtitles(contents, config)
-</script>
-<template>
-  <footer >
-    <img src="/images/ledger.svg" width="75" class="absolute bottom-5 left-8">
-    <img src="/images/scala-matsuri.svg" width="50" class="absolute bottom-4 right-15">
-    <slides-subtitle :subtitles="subtitles" />
-  </footer>
-</template>

@@ -23,7 +23,7 @@ export:
   withToc: false
 remoteAssets: true
 drawings:
-  persist: false
+  enabled: false
 selectable: true
 fonts:
   sans: Rajdhani
@@ -36,246 +36,53 @@ themeConfig:
   paginationPagesDisabled: [1, 55]
   paginationX: r
   paginationY: t
-layout: cover
-coverDate: ''
-title: Armored Type Safety with Iron
----
-
-<h1 class="!text-5xl">Armored Type Safety</h1>
-<h3>with</h3>
-<h1 class="!text-9xl">Iron</h1>
-
-<!--
-Note
--->
-
----
-layout: profile
-speaker: Raphael Lemaitre
-job: Senior Backend Staff Engineer
-company: Ledger
-tags: [Backend Blockchain, Scala, PostgreSQL]
-blog:
-    name: rlemaitre.com
-    url: https://rlemaitre.com
-website:
-    name: ledger.com
-    url: https://ledger.com
-mail: raphael@rlemaitre.com
-bluesky: "@rlemaitre.com"
-twitter: "@rlemaitre_com"
-image: /images/rlemaitre.png
+src: ./slides/title.md
 ---
 
 ---
-layout: company
-name: Ledger
-logo: /images/ledger.svg
-website:
-    name: ledger.com
-    url: https://ledger.com
-tags: [Security, Self-custody]
+src: ./slides/rlemaitre.md
 ---
 
-<div class="grid grid-cols-1 justify-center items-center h-75">
-    <div class="cornered w-90">
-        <div class="align-left text-xl">
-            <span class="float-left pr-5">
-                <span class="text-3xl accent"><carbon-hashtag/></span>
-                <span class="text-5em align-bottom font-600 accent">1</span>
-            </span>
-            technology platform in critical digital assets security and services for consumers, financial institutions and corporations
-        </div>
-    </div>
-</div>
-
-::logo::
-<img src="/images/ledger.svg" width="250" class="">
-
-<!--
-
--->
-
 ---
-layout: company
-name: Ledger
-logo: /images/ledger.svg
-website:
-    name: ledger.com
-    url: https://ledger.com
-tags: [Security, Self-custody]
+src: ./slides/ledger-desc.md
 ---
 
-<div class="grid grid-cols-3 gap-2 w-full">
-    <div class="flex-col cornered align-center text-center">
-        <span class="text-6xl font-600 accent">650+</span>
-        <p class="!m-0">
-            employees
-        </p>
-    </div>
-    <div class="flex-col cornered align-center text-center">
-        <span class="text-6xl font-600 accent pb-0"> 9 </span>
-        <p class="!m-0">
-            locations
-<!--
-            <br>
-            <emojione-flag-for-france/><emojione-flag-for-united-states/><emojione-flag-for-united-kingdom/><br>
-            <emojione-flag-for-singapore/><emojione-flag-for-switzerland/>
--->
-        </p>
-    </div>
-    <div class="flex-col cornered align-center text-center">
-        <span class="text-6xl font-600 accent">70%</span>
-        <p class="!m-0">
-            R&D intensity
-        </p>
-    </div>
-    <div class="flex-col cornered align-center text-center">
-        <span class="text-6xl font-600 accent">20+</span>
-        <p class="!m-0">
-            Scala devs
-        </p>
-    </div>
-    <div class="flex-col cornered align-center text-center">
-        <span class="text-6xl font-600 accent">30K</span>
-        <p class="!m-0">req/s</p>
-    </div>
-    <div class="flex-col align-center text-center" v-click>
-        <img src="/images/join-us.png" class="brightness-90 h-150px w-auto"/>
-    </div>
-</div>
-::logo::
-<img src="/images/ledger.svg" width="250" class="">
-
-<!--
-
--->
-
 ---
-layout: cover
-coverDate:
+src: ./slides/ledger-numbers.md
 ---
 
-<h1 class="!text-8xl">Once upon a time,</h1>
-<h2 class="!text-3xl">in a codebase far, far away...</h2>
-
 ---
-layout: default
+src: ./slides/problem-title.md
 ---
 
-Suppose you find this code in your codebase
-
-```scala
-case class IBAN(
-    countryCode: String,
-    checkDigits: String,
-    bankCode: String,
-    branchCode: String,
-    accountNumber: String,
-    nationalCheckDigit: String
-)
-```
-
 ---
-layout: default
+src: "./slides/problem-def.md"
 ---
 
-This looks good
-
-```scala
-val iban = IBAN(
-    "FR",
-    "14",
-    "20041",
-    "01005",
-    "0500013M026",
-    "06"
-)
-```
-
 ---
-layout: default
+src: ./slides/problem-happy-path.md
 ---
 
-Until you find something like this
-
-```scala
-val shuffled = IBAN(
-    "0500013M026",
-    "FR",
-    "06",
-    "14",
-    "20041",
-    "01005"
-)
-```
-
 ---
-layout: default
+src: ./slides/problem-switch-params.md
 ---
 
-So, you try this
-
-```scala
-val wtf = IBAN(
-    "🇫🇷",
-    "✅",
-    "🏦",
-    "🌳",
-    "🧾",
-    "🤡"
-)
-```
-
 ---
-layout: cover
-coverDate:
+src: ./slides/problem-with-emojis.md
 ---
 
-<h2 class="!text-3xl">We can do</h2>
-<h1 class="!text-8xl">Better</h1>
-
 ---
-layout: cover
-coverDate:
+src: ./slides/problem-to-basic.md
 ---
 
-<h2 class="!text-3xl">Maybe with</h2>
-<h1 class="!text-8xl">Type</h1>
-<h1 class="!text-8xl">Aliases</h1>
-
 ---
-layout: default
+src: ./slides/basic-type-aliases-title.md
 ---
 
-```scala
-type CountryCode = String
-type CheckDigits = String
-type BankCode = String
-type BranchCode = String
-type AccountNumber = String
-type NationalCheckDigit = String
+---
+src: ./slides/basic-type-aliases-definition.md
+---
 
-case class IBAN(
-    countryCode: CountryCode,
-    checkDigits: CheckDigits,
-    bankCode: BankCode,
-    branchCode: BranchCode,
-    accountNumber: AccountNumber,
-    nationalCheckDigit: NationalCheckDigit
-)
-```
-
-<!--
-Pros
-
-- Legibility
-
-Cons
-
-- Substitutions are possible
-- No validation
--->
 ---
 layout: cover
 coverDate:
@@ -469,10 +276,10 @@ layout: default
 opaque type BranchCode <: String = String
 object BranchCode:
     inline def wrap(input: String): BranchCode = input
-    
+
     extension(value: BranchCode)
         inline def unwrap: String = value
-    
+
     def parse(input: String): Either[FormatError, BranchCode] =
       Either.cond(input.length == 5, wrap(input),
         FormatError("Branch code must be 5 chars"))
@@ -481,26 +288,26 @@ object BranchCode:
 ---
 layout: default
 ---
-
 # Summary
 
-|               |            <carbon-view/><sup>1</sup>             | <material-symbols-light-format-list-numbered/><sup>2</sup> |      <carbon-certificate-check/><sup>3</sup>      | <material-symbols-light-switch-access-2-outline/><sup>4</sup> |          <carbon-meter-alt/><sup>5</sup>          |   <tdesign-shrink-vertical/><sup>6</sup>    |
-|:-------------:|:-------------------------------------------------:|:----------------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------:|
-|  Raw Classes  |    <carbon-close-filled class="text-red-600"/>    |        <carbon-close-filled class="text-red-600"/>         |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    | <carbon-close-filled class="text-red-600"/> |
-| Type Aliases  | <carbon-checkmark-filled class="text-green-600"/> |        <carbon-close-filled class="text-red-600"/>         |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    | <carbon-close-filled class="text-red-600"/> |
-| Value Classes | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    | <carbon-close-filled class="text-red-600"/> |
-| VC + Require  | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    | <carbon-close-filled class="text-red-600"/> |
-|  VC + Either  | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       |    <carbon-close-filled class="text-red-600"/>    | <carbon-close-filled class="text-red-600"/> |
-| Opaque types  | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> | <carbon-close-filled class="text-red-600"/> |
+|                                          |            <carbon-view/><sup>1</sup>             | <material-symbols-light-format-list-numbered/><sup>2</sup> |      <carbon-certificate-check/><sup>3</sup>      | <material-symbols-light-switch-access-2-outline/><sup>4</sup> |          <carbon-meter-alt/><sup>5</sup>          |      <tdesign-shrink-vertical/><sup>6</sup>       | <fluent-text-box-settings-20-regular/><sup>7</sup> |
+|:----------------------------------------:|:-------------------------------------------------:|:----------------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------------------:|:-------------------------------------------------:|:-------------------------------------------------:|:--------------------------------------------------:|
+|               Raw Classes                |    <carbon-close-filled class="text-red-600"/>    |        <carbon-close-filled class="text-red-600"/>         |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
+|               Type Aliases               | <carbon-checkmark-filled class="text-green-600"/> |        <carbon-close-filled class="text-red-600"/>         |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
+|              Value Classes               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      |    <carbon-close-filled class="text-red-600"/>    |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
+|               VC + Require               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |          <carbon-close-filled class="text-red-600"/>          |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
+|               VC + Either                | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
+|               Opaque types               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 
-<footnotes separator="false" justify="evenly">
-    <footnote number="1">Legibility</footnote>
-    <footnote number="2">Strict Order</footnote>
-    <footnote number="3">Validation</footnote>
-    <footnote number="4">Referential Transparency</footnote>
-    <footnote number="5">Performance</footnote>
-    <footnote number="6">Conciseness</footnote>
-</footnotes>
+<!--<footnotes separator="false" justify="evenly">-->
+<!--    <footnote number="1">Legibility</footnote>-->
+<!--    <footnote number="2">Strict Order</footnote>-->
+<!--    <footnote number="3">Validation</footnote>-->
+<!--    <footnote number="4">Referential Transparency</footnote>-->
+<!--    <footnote number="5">Performance</footnote>-->
+<!--    <footnote number="6">Conciseness</footnote>-->
+<!--    <footnote number="7">Compile-Time checking</footnote>-->
+<!--</footnotes>-->
 
 ---
 layout: cover
@@ -827,15 +634,15 @@ layout: default
 |               Opaque types               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 | <span class="accent fw-bold">Iron</span> | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/>  |
 
-<footnotes separator="false" justify="evenly">
-    <footnote number="1">Legibility</footnote>
-    <footnote number="2">Strict Order</footnote>
-    <footnote number="3">Validation</footnote>
-    <footnote number="4">Referential Transparency</footnote>
-    <footnote number="5">Performance</footnote>
-    <footnote number="6">Conciseness</footnote>
-    <footnote number="7">Compile-Time checking</footnote>
-</footnotes>
+<!--<footnotes separator="false" justify="evenly">-->
+<!--    <footnote number="1">Legibility</footnote>-->
+<!--    <footnote number="2">Strict Order</footnote>-->
+<!--    <footnote number="3">Validation</footnote>-->
+<!--    <footnote number="4">Referential Transparency</footnote>-->
+<!--    <footnote number="5">Performance</footnote>-->
+<!--    <footnote number="6">Conciseness</footnote>-->
+<!--    <footnote number="7">Compile-Time checking</footnote>-->
+<!--</footnotes>-->
 ---
 layout: cover
 coverDate:
@@ -866,7 +673,7 @@ layout: default
     <div class="cornered">
         <img src="/images/zio.png" class="m-auto mb-7 h-50px"/>
         <p>
-            <code>Validation</code>    
+            <code>Validation</code>
         </p>
     </div>
 </div>
@@ -975,14 +782,14 @@ layout: default
 # Doobie
 
 ```scala
-def getLatestByTag(account: AccountId, name: Tag.Name, value: Tag.Value): 
+def getLatestByTag(account: AccountId, name: Tag.Name, value: Tag.Value):
     ConnectionIO[Option[Position]] =
   sql"""
   select
     account_id,
     address,
     coalesce(
-      (select jsonb_object_agg(tag_name, tag_value order by tag_name) 
+      (select jsonb_object_agg(tag_name, tag_value order by tag_name)
        from position_tags pt where p.position_id = pt.position_id),
       '{}'::jsonb),
     sync_status
@@ -1053,10 +860,33 @@ coverDate: ''
 
 <h1>Any questions?</h1>
 
-<figure class="flex justify-center items-center text-center">
-  <img alt="Slides available at https://scalamatsuri.rlemaitre.com" src="/images/qrcode-slides.png" width="250"/>
-</figure>
-<a href="https://scalamatsuri.rlemaitre.com">https://scalamatsuri.rlemaitre.com</a>
+<div class="grid grid-cols-2">
+  <div>
+    <figure class="flex justify-center items-center text-center">
+      <img alt="Slides available at https://scalamatsuri.rlemaitre.com" src="/images/qrcode-slides.png" width="250"/>
+    </figure>
+    <a href="https://scalamatsuri.rlemaitre.com">https://scalamatsuri.rlemaitre.com</a>
+  </div>
+  <div class="grid grid-cols-1 justify-center content-center">
+    <p>
+      <a class="mx-2" href="https://rlemaitre.com" target="_blank">
+        <material-symbols-light-home-outline-rounded class="text-red-600"/>
+       rlemaitre.com 
+      </a>
+    </p>
+    <p>
+      <a class="mx-2" href="https://ledger.com" target="_blank">
+        <material-symbols-light-business-center-outline-rounded class="text-red-600"/>
+        ledger.com
+      </a>
+    </p>
+    <p>
+      <a class="mx-2" href="https://twitter.com/rlemaitre_com" target="_blank">
+        <arcticons-x-twitter class="text-red-600"/> 
+        rlemaitre_com
+      </a>
+    </p>
+  </div>
+</div>
 
 <h1>Thank you!</h1>
-
