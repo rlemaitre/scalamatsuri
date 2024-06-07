@@ -94,6 +94,6 @@ onMounted(async() => {
 
 <template>
   <div v-if="contents && contents[language] && contents[language][page] && contents[language][page][click]">
-    <p v-if="curSubtitle" class="css-fix" :style="{background, color, fontSize}">{{ curSubtitle }}</p>
+    <span v-if="curSubtitle" class="subtitle" :style="{background, color, fontSize}">{{ curSubtitle }}</span>
   </div>
 </template>

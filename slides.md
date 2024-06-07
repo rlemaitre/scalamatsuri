@@ -299,16 +299,15 @@ layout: default
 |               VC + Either                | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 |               Opaque types               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 
-<!--<footnotes separator="false" justify="evenly">-->
-<!--    <footnote number="1">Legibility</footnote>-->
-<!--    <footnote number="2">Strict Order</footnote>-->
-<!--    <footnote number="3">Validation</footnote>-->
-<!--    <footnote number="4">Referential Transparency</footnote>-->
-<!--    <footnote number="5">Performance</footnote>-->
-<!--    <footnote number="6">Conciseness</footnote>-->
-<!--    <footnote number="7">Compile-Time checking</footnote>-->
-<!--</footnotes>-->
-
+<!--
+1. Legibility
+2. Strict Order
+3. Validation
+4. Referential Transparency
+5. Performance
+6. Conciseness
+7. Compile-Time checking
+-->
 ---
 layout: cover
 coverDate:
@@ -634,15 +633,15 @@ layout: default
 |               Opaque types               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 | <span class="accent fw-bold">Iron</span> | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/>  |
 
-<!--<footnotes separator="false" justify="evenly">-->
-<!--    <footnote number="1">Legibility</footnote>-->
-<!--    <footnote number="2">Strict Order</footnote>-->
-<!--    <footnote number="3">Validation</footnote>-->
-<!--    <footnote number="4">Referential Transparency</footnote>-->
-<!--    <footnote number="5">Performance</footnote>-->
-<!--    <footnote number="6">Conciseness</footnote>-->
-<!--    <footnote number="7">Compile-Time checking</footnote>-->
-<!--</footnotes>-->
+<!--
+1. Legibility
+2. Strict Order
+3. Validation
+4. Referential Transparency
+5. Performance
+6. Conciseness
+7. Compile-Time checking
+-->
 ---
 layout: cover
 coverDate:
@@ -683,60 +682,18 @@ layout: default
 
 # Typeclasses instances
 
-<div class="grid grid-cols-3 justify-evenly">
-    <div class="cornered text-center">
-        <h3>Endpoints</h3>
-        <ul>
-            <li class="list-none">
-                Tapir
-            </li>
-        </ul>
-    </div>
-    <div class="cornered text-center">
-        <h3>JSON</h3>
-        <ul>
-            <li class="list-none" style="line-height: 1.5em;">Borer</li>
-            <li class="list-none" style="line-height: 1.5em;">Circe</li>
-            <li class="list-none" style="line-height: 1.5em;">Jsoniter</li>
-            <li class="list-none" style="line-height: 1.5em;">uPickle</li>
-            <li class="list-none" style="line-height: 1.5em;">ZIO-JSON</li>
-        </ul>
-    </div>
-    <div class="cornered text-center">
-        <h3>Databases</h3>
-        <ul>
-            <li class="list-none">
-                Doobie
-            </li>
-            <li class="list-none">
-                Skunk
-            </li>
-        </ul>
-    </div>
-    <div class="cornered text-center">
-        <h3>Config</h3>
-        <ul>
-            <li class="list-none">
-                Ciris
-            </li>
-        </ul>
-    </div>
-    <div class="cornered text-center">
-        <h3>Tests</h3>
-        <ul>
-            <li class="list-none">
-                Scalacheck
-            </li>
-        </ul>
-    </div>
-    <div class="cornered text-center">
-        <h3>CLI</h3>
-        <ul>
-            <li class="list-none">
-                Decline
-            </li>
-        </ul>
-    </div>
+<div class="grid grid-cols-4 justify-evenly">
+    <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-lan-outline class="color-red-500"/> Tapir</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-json class="color-red-500"/> Borer</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-json class="color-red-500"/> Circe</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-json class="color-red-500"/> Jsoniter</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-json class="color-red-500"/> uPickle</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-json class="color-red-500"/> ZIO-JSON</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-database-outline class="color-red-500"/> Doobie</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-database-outline class="color-red-500"/> Skunk</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><carbon-gears class="color-red-500"/> Ciris</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-experiment-outline class="color-red-500" />Scalacheck</div>
+    <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-terminal class="color-red-500" />Decline</div>
 </div>
 
 ---

@@ -1,12 +1,15 @@
 :root {
-  /* default theme color */
-  /* can be overrided by uses `themeConfig` option */
   --slidev-theme-primary: #5d8392;
 }
 
 .slidev-layout {
   padding-top: 1rem;
   padding-bottom: 4rem;
+
+  td {
+    padding-bottom: 0.25rem;
+    padding-top: 0.25rem;
+  }
 }
 
 .slidev-layout.cover,
@@ -29,23 +32,106 @@
 }
 
 #slide-content {
-
   footer {
-    @apply fixed h-4rem bottom-0 pl-10 pr-10;
+    @apply fixed h-6rem bottom-0 pl-10 pr-10;
     width: 100%;
     background-color: #333;
     color: white;
     text-align: center;
-    line-height: 4rem;
+    line-height: 6rem;
+    .subtitle {
+      margin-left: 8rem;
+      margin-right: 8rem;
+      font-size: 150%;
+      text-wrap: pretty;
+    }
   }
   #slideshow {
-    min-height: calc(100% - 4rem);
-    max-height: calc(100% - 4rem);
-    height: calc(100% - 4rem);
-    padding-bottom: 4rem;
+    min-height: calc(100% - 6rem);
+    max-height: calc(100% - 6rem);
+    height: calc(100% - 6rem);
+    padding-bottom: 6rem;
   }
 }
 
+@font-face {
+    font-family: 'Monad';
+    src: url('/fonts/Monad.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+}
+:root {
+    --slidev-theme-primary: #d32129;
+    --slidev-theme-backgroundUrl: url(/images/background.png);
+    --slidev-theme-background: '#ffffff';
+    --slidev-theme-corner-size: 2px;
+}
 
+#slideshow {
+    background-color: var(--slidev-theme-background);
+    background-image: var(--slidev-theme-backgroundUrl);
+    background-size: cover;
+    background-position: center;
+}
 
+.slidev-layout {
+    h1, h2, h3, h4, h5, h6 {
+        color: var(--slidev-theme-primary);
+        font-family: 'Monad', sans-serif;
+        padding-top: 8px;
+        padding-bottom: 8px;
+    }
+
+    .accent {
+        color: var(--slidev-theme-primary);
+    }
+
+    table sup {
+        font-size: 0.5em;
+        top: -1em;
+    }
+
+}
+
+.cornered, .cornered-inverted {
+    position: relative;
+    padding: 1em 1.2em;
+    text-align: left;
+    width: 80%;
+    margin: 1rem auto 2rem;
+}
+
+.cornered {
+    background:
+            linear-gradient(to right, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 0 0,
+            linear-gradient(to left, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 100% 100%,
+            linear-gradient(to bottom, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 0 0,
+            linear-gradient(to top, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 100% 100%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.cornered-inverted {
+    background:
+            linear-gradient(to right, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 0 100%,
+            linear-gradient(to left, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 100% 0,
+            linear-gradient(to bottom, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 100% 0,
+            linear-gradient(to top, var(--slidev-theme-primary) var(--slidev-theme-corner-size), transparent var(--slidev-theme-corner-size)) 0 100%;
+    background-repeat: no-repeat;
+    background-size: 20px 20px;
+}
+
+.slidev-code {
+    text-align: left;
+}
+.pagination {
+    position: absolute;
+    top: 15px !important;
+    right: 17px !important;
+    opacity: 50%;
+}
+
+:not(pre) > code:before, :not(pre) > code:after {
+    content: '';
+}
 
