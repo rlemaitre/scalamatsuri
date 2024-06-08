@@ -14,3 +14,9 @@ case class IBAN(
     nationalCheckDigit: String
 )
 ```
+
+<!--
+
+In a (not so) imaginary codebase, we found this class definition describing a bank account number
+
+-->

@@ -5,7 +5,6 @@ logo: /images/ledger-black.svg
 website:
     name: ledger.com
     url: https://ledger.com
-# tags: [Security, Self-custody]
 ---
 
 <div class="grid grid-cols-3 gap-2 w-full">
@@ -19,11 +18,6 @@ website:
         <span class="text-6xl font-600 accent pb-0"> 9 </span>
         <p class="!m-0">
             locations
-<!--
-            <br>
-            <emojione-flag-for-france/><emojione-flag-for-united-states/><emojione-flag-for-united-kingdom/><br>
-            <emojione-flag-for-singapore/><emojione-flag-for-switzerland/>
--->
         </p>
     </div>
     <div class="flex-col cornered align-center text-center">
@@ -50,5 +44,15 @@ website:
 <img src="/images/ledger-black.svg" width="250" class="">
 
 <!--
+In Ledger we're more than 650 employees
+
+all around the world (France, UK, US, Singapore, Switzerland)
+
+mainly in research & development.
+
+[CLICK]
+
+And we have a lot of open positions
+
 
 -->

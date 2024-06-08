@@ -10,4 +10,13 @@ title: Armored Type Safety with Iron
 
 <!--
 Note
+
+Hi everyone!
+
+It's an honnor to be at ScalaMatsuri.
+
+It's my first time ever here in Japan.
+
+I'll talk to you about type safety and more precisely of Iron.
+
 -->

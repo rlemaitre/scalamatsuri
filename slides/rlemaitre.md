@@ -15,3 +15,11 @@ tags: [Backend Blockchain, Scala, PostgreSQL]
 # twitter: "@rlemaitre_com"
 image: /images/rlemaitre.png
 ---
+
+<!--
+I'm Raphaël.
+
+I've been a developer for nearly 25 years and having fun with Scala for about 10 years.
+
+I work as Senior Backend Staff Enginner at Ledger.
+-->

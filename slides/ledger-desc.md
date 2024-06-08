@@ -24,5 +24,11 @@ tags: [Security, Self-custody]
 <img src="/images/ledger-black.svg" width="250" class="">
 
 <!--
+I work at Ledger.
 
+Ledger is the world leader in cryptocurrency security but not only, as we're securing all digital assets.
+
+We build an hardware wallet storing your private keys.
+
+To ease the usage, we develop a bunch of services and I'm develop backend services for these.
 -->
