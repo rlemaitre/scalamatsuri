@@ -312,7 +312,7 @@ const config = {
   },
   background: 'transparent',
   color: '#ffffff',
-  //fontSize: '36pt',
+  //fontSize: '20pt',
 }
 const subtitles = new Subtitles(contents, config)
 </script>

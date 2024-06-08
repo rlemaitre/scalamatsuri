@@ -92,6 +92,9 @@ coverDate:
 <h1 class="!text-8xl">Value</h1>
 <h1 class="!text-8xl">classes</h1>
 
+<!--
+ Maybe we can try with Value classes
+-->
 ---
 layout: default
 ---
@@ -109,7 +112,11 @@ case class AccountNumber(value: String) extends AnyVal
 
 case class NationalCheckDigit(value: String) extends AnyVal
 ```
+<!--
 
+We have to define a class for each field
+
+-->
 ---
 layout: default
 ---
@@ -126,7 +133,11 @@ val iban = IBAN(
     NationalCheckDigit("06")
 )
 ```
+<!--
 
+We can use them easily
+
+-->
 ---
 layout: default
 ---
@@ -143,7 +154,11 @@ val shuffled = IBAN(
     BranchCode("01005")
 )
 ```
+ <!--
 
+And we can't switch parameters
+
+-->
 ---
 layout: default
 ---
@@ -160,7 +175,11 @@ val wtf = IBAN(
     NationalCheckDigit("🤡")
 )
 ```
+ <!--
 
+But we can still have invalid values 
+
+-->
 ---
 layout: cover
 coverDate:
@@ -169,6 +188,11 @@ coverDate:
 <h2 class="!text-3xl">Let's add</h2>
 <h1 class="!text-8xl">validation</h1>
 
+<!--
+
+So we'll have to add data validation
+
+-->
 ---
 layout: default
 ---
@@ -192,7 +216,13 @@ case class AccountNumber(str: String) extends AnyVal:
 case class NationalCheckDigit(str: String) extends AnyVal:
   require(str.length == 2, "National check digit must be 2 chars")
 ```
+<!--
 
+Here, we have basic validation (it could be better but I kept it simple for this talk)
+
+And when an invalid value is passed, an exception is raised
+
+-->
 ---
 layout: cover
 coverDate:
@@ -203,6 +233,11 @@ coverDate:
 <h2 class="!text-3xl">without</h2>
 <h1 class="!text-8xl">crashing</h1>
 
+<!--
+
+And if we want to handle correctly invalid values
+
+-->
 ---
 layout: default
 ---
@@ -211,7 +246,11 @@ layout: default
 case class FormatError(reason: String)
   extends Exception(reason), NoStackTrace
 ```
+<!--
 
+Then we define own own error type
+
+-->
 ---
 layout: default
 ---
@@ -235,12 +274,25 @@ object BankCode:
     Either.cond(str.length == 5, BankCode(str),
       FormatError("Bank code must be 5 chars"))
 ```
+<!--
+
+[CLICK]
+
+And define a smart constructor
+
+[CLICK]
+
+And use Either to handle validation issues.
+
+We could use other type classes such as `Validated` or `Validation`
+
+-->
 
 ---
 layout: default
 ---
 
-```scala {all|3,9,15|4-5,10-11,16-17|all}
+```scala
 case class BranchCode(value: String) extends AnyVal
 object BranchCode:
   def parse(str: String): Either[FormatError, BranchCode] =
@@ -259,7 +311,11 @@ object NationalCheckDigits:
     Either.cond(str.length == 2, NationalCheckDigits(str),
       FormatError("Notional check digits must be 2 chars"))
 ```
+<!--
 
+And do this for all your value classes
+
+-->
 ---
 layout: cover
 coverDate:
@@ -268,6 +324,11 @@ coverDate:
 <h2 class="!text-3xl">What about</h2>
 <h1 class="!text-8xl">Opaque types</h1>
 
+<!--
+
+As we're using Scala 3, why not using opaque types?
+
+-->
 ---
 layout: default
 ---
@@ -284,7 +345,13 @@ object BranchCode:
       Either.cond(input.length == 5, wrap(input),
         FormatError("Branch code must be 5 chars"))
 ```
+<!--
+So here is the code for a single type
 
+We have here a zero-cost abstraction of your validated data type
+
+It's still very verbose
+-->
 ---
 layout: default
 ---
@@ -300,13 +367,21 @@ layout: default
 |               Opaque types               | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> |    <carbon-close-filled class="text-red-600"/>    |    <carbon-close-filled class="text-red-600"/>     |
 
 <!--
-1. Legibility
-2. Strict Order
-3. Validation
-4. Referential Transparency
-5. Performance
-6. Conciseness
-7. Compile-Time checking
+
+So if we want to summarize, you can see in this table how each strategy behaves in term of:
+
+| Column | Property                 |
+|-------:|:-------------------------|
+| 1      | Legibility               |
+| 2      | Strict Parameter Order   |
+| 3      | Validation               |
+| 4      | Referential Transparency |
+| 5      | Performance              |
+| 6      | Conciseness              |
+| 7      | Compile-Time checking    |
+
+We can see that no strategies respond to all what we want
+
 -->
 ---
 layout: cover
@@ -316,11 +391,22 @@ coverDate:
 <h2 class="!text-3xl">Less Boilerplate,</h2>
 <h1 class="!text-8xl">Smarter Design</h1>
 
+<!--
+
+There should be something smarter and shorter
+
+-->
 ---
 layout: default
 ---
 
 <img src="/images/iron.svg" style="filter: brightness(85%)">
+
+<!--
+
+Meet Iron
+
+-->
 
 ---
 layout: cover
@@ -330,6 +416,11 @@ coverDate:
 <h2 class="!text-3xl">What is</h2>
 <h1 class="!text-9xl">Iron?</h1>
 
+<!--
+
+What is it?
+
+-->
 ---
 layout: default
 ---
@@ -342,6 +433,15 @@ layout: default
     <div class="flex flex-col cornered text-center">Created in Scala 3 by Raphaël Fromentin</div>
 </div>
 
+<!--
+
+It's a composable type constraint library
+
+That enable constraint binding to a specific type at compile time 
+
+It's written using Scala 3 features such as new macros, inlines, extension methods
+
+-->
 ---
 layout: default
 ---
@@ -365,6 +465,16 @@ given Constraint[Int, Positive] with
 //
 ```
 
+<!--
+How do we define a constraint?
+
+First a constraint is just an empty class
+
+[CLICK]
+
+Then you define how the contraint behaves 
+
+-->
 ---
 layout: default
 ---
@@ -387,7 +497,11 @@ val x: Int :| Positive = 1
 
 //
 ```
+<!--
 
+Using it is simple as saying my type has a constraint
+
+-->
 ---
 layout: default
 ---
@@ -411,6 +525,11 @@ val y: Int :| Positive = -1
 //
 ```
 
+<!--
+
+And invalid literal values would lead to a compilation error 
+
+-->
 ---
 layout: default
 ---
@@ -433,7 +552,11 @@ val foo: Int :| (Positive & Less[42]) = 1
 
 //
 ```
+<!--
 
+And we can compose constraints easily
+
+-->
 ---
 layout: default
 ---
@@ -457,6 +580,11 @@ val bar: Int :| (Positive & Less[42]) = -1
 //
 ```
 
+<!--
+
+Here again invalid literal values lead to compilation error
+
+-->
 ---
 layout: default
 ---
@@ -480,6 +608,11 @@ val baz: Int :| (Positive & Less[42]) = 123
 //
 ```
 
+<!--
+
+And message is different depending on the constraint that has been violated
+
+-->
 ---
 layout: cover
 coverDate:
@@ -487,6 +620,11 @@ coverDate:
 
 <h1 class="!text-8xl">Validation</h1>
 
+<!--
+
+How does validation behave?
+
+-->
 ---
 layout: default
 ---
@@ -510,6 +648,15 @@ Message: Should be strictly positive
   </div>
 </v-click>
 
+<!--
+
+Here we have a simple code, the difference with previous code is just that value is not defined on the same line 
+
+[CLICK]
+
+But when we compile this code we have this compilation error
+
+-->
 ---
 layout: default
 ---
@@ -528,6 +675,12 @@ val value = 42
 val x: Int :| Greater[0] = value.refineUnsafe
 ```
 
+<!--
+To fix this, we have two solutions:
+
+* Either inline the value
+* Or use the `refineUnsafe` extension method 
+-->
 
 ---
 layout: default
@@ -548,9 +701,12 @@ val x: Int :| Greater[0] = value.refineUnsafe
 </v-click>
 
 <!--
-Imperative
+Anf when an invalid value is used,
 
-Illegal argument exception
+[CLICK]
+
+We have a Illegal argument exception at runtime
+
 -->
 
 ---
@@ -579,7 +735,13 @@ def createIBAN(  countryCode: String,
 
 <!--
 
-Functional
+In real life, values are rarely known at compile time but at runtime.
+
+So, how do we use Iron in a functional way?
+
+Here, we're using a for-comprehension to parse all values and yield an `Either`
+
+The problem here is that implementation of constraints leak to everywhere the type is used.
 
 -->
 
@@ -600,6 +762,16 @@ object Positive extends RefinedTypeOps[Int, Greater[0], Positive]
 // ...
 ```
 
+<!--
+
+But thanks to Scala 3 opaque type we can hide the implementation
+
+We define our opaque type as a subtype of our base type and apply the constraint(s)
+
+Then, for ease the usage, we make the companion object extend `RefinedTypeOps` that provide utility methods.
+
+-->
+
 ---
 layout: default
 ---
@@ -609,14 +781,24 @@ layout: default
 Constraint factorization
 
 ```scala
+// There can be only 21 millions BTC ever and 1 BTC = 100,000,000 satoshis
+
 private type SatsConstraint =
-  GreaterEqual[0] & LessEqual[100000000 * 21000000]
+  GreaterEqual[0] & LessEqual[21_000_000 * 100_000_000]
 
 opaque type Sats <: Long = Long :| SatsConstraint
 
 object Sats extends RefinedTypeOps[Long, SatsConstraint, Sats]
 ```
+<!--
+In real life code, we often want to reuse different constrains.
 
+To de so, we can define an alias type and use it in data type definition.
+
+Actually, here, you see an actual code of our codebase at Ledger:
+
+we define satochi type and incoporate constraints
+-->
 ---
 layout: default
 ---
@@ -634,14 +816,21 @@ layout: default
 | <span class="accent fw-bold">Iron</span> | <carbon-checkmark-filled class="text-green-600"/> |     <carbon-checkmark-filled class="text-green-600"/>      | <carbon-checkmark-filled class="text-green-600"/> |       <carbon-checkmark-filled class="text-green-600"/>       | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/> | <carbon-checkmark-filled class="text-green-600"/>  |
 
 <!--
-1. Legibility
-2. Strict Order
-3. Validation
-4. Referential Transparency
-5. Performance
-6. Conciseness
-7. Compile-Time checking
+
+So if I take the summary table we saw before we see that Iron fulfill all requirements we have
+
+| Column | Property                 |
+|-------:|:-------------------------|
+| 1      | Legibility               |
+| 2      | Strict Parameter Order   |
+| 3      | Validation               |
+| 4      | Referential Transparency |
+| 5      | Performance              |
+| 6      | Conciseness              |
+| 7      | Compile-Time checking    |
+
 -->
+
 ---
 layout: cover
 coverDate:
@@ -652,6 +841,14 @@ coverDate:
 <div class="w-full flex flex-col items-center"><img src="/images/scalalove-logo.svg" width="150"/></div>
 
 <h1 class="!text-8xl">Ecosystem</h1>
+
+<!--
+
+We rarely write vanilla scala but use a lot of libraries.
+
+Fortunately, Iron loves the Scala ecosystem 
+
+-->
 
 ---
 layout: default
@@ -676,6 +873,12 @@ layout: default
         </p>
     </div>
 </div>
+
+<!--
+
+First whichever the effect system you use, Iron has an integration 
+
+-->
 ---
 layout: default
 ---
@@ -696,6 +899,16 @@ layout: default
     <div class="cornered r-0.5rem p-0.5rem text-center"><material-symbols-light-terminal class="color-red-500" />Decline</div>
 </div>
 
+<!--
+
+And it has integration for a lot of utility libraries also
+* Tapir
+* One of the few JSON library
+* Property-based tests
+* Configuration
+* CLI tools
+
+-->
 ---
 layout: default
 ---
@@ -717,6 +930,16 @@ object Tag:
   object Value extends RefinedTypeOps[String, ValueConstraint, Value]
 ```
 
+<!--
+
+Now, I will show you how we use it in our codebase
+
+Here we define a `Tag` class with a name that must be non empty and with a maximum of 128 characters
+
+and a non-empty, 512 max characters-long value
+
+-->
+
 ---
 layout: default
 ---
@@ -724,6 +947,8 @@ layout: default
 # Tapir
 
 ```scala
+import sttp.tapir.codec.iron.given
+
 val getLatest = base
   .name("Get latest account addresses")
   .in(query[Option[Tag]]("tag"))
@@ -732,6 +957,12 @@ val getLatest = base
   .out(jsonBody[Option[AddressView]])
 ```
 
+<!--
+
+Then we use this class as a query parameter of an endpoint defined with tapir 
+
+-->
+
 ---
 layout: default
 ---
@@ -739,6 +970,8 @@ layout: default
 # Doobie
 
 ```scala
+import io.github.iltotore.iron.given
+
 def getLatestByTag(account: AccountId, name: Tag.Name, value: Tag.Value):
     ConnectionIO[Option[Position]] =
   sql"""
@@ -758,6 +991,11 @@ def getLatestByTag(account: AccountId, name: Tag.Name, value: Tag.Value):
   """.query[Position].option
 ```
 
+<!--
+
+And use it in our database queries (using doobie)
+
+-->
 ---
 layout: cover
 coverDate: ''
@@ -768,6 +1006,17 @@ coverDate: ''
 <h2 class="!text-3xl">an</h2>
 <h1 class="!text-8xl">Integration?</h1>
 
+<!--
+
+OK but what if my preferred library isn't supported by Iron ?
+
+It's simple, you can write your own integration
+
+That's what we did as doobie support didn't exist when we started using Iron.
+
+So, brace yourselef, I'm gonna show you the whole code of the integration
+
+-->
 ---
 layout: default
 ---
@@ -785,6 +1034,14 @@ inline given [T]
     ev.asInstanceOf[Meta[T]]
 ```
 
+<!--
+
+There it is: 7 lines of formatted code 
+
+We just define how to transform back and forth between the base type and the constrained type 
+
+-->
+
 ---
 layout: cover
 coverDate: ''
@@ -792,6 +1049,11 @@ coverDate: ''
 
 <h1 class="!text-8xl">Takeways</h1>
 
+<!--
+
+So if you have to remember something about this talk 
+
+-->
 ---
 layout: default
 ---
@@ -809,6 +1071,24 @@ layout: default
     <div class="flex flex-col text-xl cornered" v-click>Noticeably increased the reliability of our code</div>
     <div class="flex flex-col text-xl cornered" v-click>Scala 3 type system is incredibly powerful</div>
 </div>
+
+<!--
+
+First Iron helps a lot with making illegal states unrepresentable
+
+[CLICK]
+
+It helps us a lot to reduce the feedback loop right to compile time 
+
+[CLICK]
+
+Increased the code reliability and legibility of our code 
+
+[CLICK]
+
+And most importantly Scala 3 type system is incredibly powerful so use it at its maximum
+
+-->
 
 ---
 layout: cover
@@ -847,3 +1127,10 @@ coverDate: ''
 </div>
 
 <h1>Thank you!</h1>
+
+<!--
+
+That's the end of this talk, thank you
+
+You can find these slides by flashing this QR code and there's multiple way to contact me
+-->
